@@ -9,7 +9,7 @@
       </v-flex>
       <v-flex xs12 md5>
         <v-card>
-          <v-toolbar dark color="purple">
+          <v-toolbar dark color="purple lighten-1">
             <v-toolbar-title>General Information</v-toolbar-title>
           </v-toolbar>
            <v-list two-line subheader>
