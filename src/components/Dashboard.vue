@@ -26,7 +26,7 @@
                   </div>
                 </v-card-title>
                 <v-card-actions>
-                  <v-btn dark flat :to="'/view-engine/' + brand.id">
+                  <v-btn dark flat :to="'/view-engine/' + brand.engine_code">
                     <v-icon left light>arrow_forward</v-icon>
                         View More
                     </v-btn>
@@ -63,7 +63,7 @@ export default {
             cylinders: doc.data().cylinders,
             engine_code: doc.data().engine_code,
             power_hp: doc.data().power_hp,
-            powe_kw: doc.data().powe_kw,
+            power_kw: doc.data().power_kw,
             remark: doc.data().remark,
             general_engine_image: doc.data().general_engine_image
           };

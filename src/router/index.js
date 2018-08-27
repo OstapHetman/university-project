@@ -27,7 +27,7 @@ export default new Router({
       component: EditEngine
     },
     {
-      path: "/view-engine/:engine_id",
+      path: "/view-engine/:engine_code",
       name: "view-engine",
       component: ViewEngine
     },
