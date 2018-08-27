@@ -1,4 +1,5 @@
 <template>
+  <v-container>
     <v-layout row wrap justify-space-between align-center fill-height>
       <v-flex xs12 >
         <h1 class="text-md-center mb-4 indigo--text">{{ brand }}</h1>
@@ -83,6 +84,7 @@
         </v-btn>
       </v-flex>
     </v-layout>
+  </v-container>  
 </template>
 
 <script>

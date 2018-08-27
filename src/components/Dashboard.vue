@@ -2,41 +2,43 @@
     <!-- <div id="dashboard">
         <h1>Dashboard</h1>
     </div> -->
-    <v-layout row wrap justify-space-between>
-      <v-flex xs12 sm10 md5 v-for="brand in brands" :key="brand.id" class="mb-4">
-        <v-card class="blue darken-3">
-          <v-container fluid>
-            <v-layout row>
-              <v-flex xs5 sm4 md5>
-                 <v-card-media
-                    :src="brand.general_engine_image"
-                    height="150px"
-                  ></v-card-media>
-              </v-flex>
-              
-              <v-flex xs7 sm8 md9>
-                <v-card-title primary-title>
-                  <div>
-                    <h2 class="white--text mb-0">Brand: "{{ brand.brand }}"</h2>
-                    <div class="white--text">
-                      <p class="mb-0">Engine Code: {{ brand.engine_code}}</p>
-                      <p class="mb-0">Built In: {{ brand.built_in}}</p> 
-                      <p class="mb-0">Fuel Type: {{ brand.remark}}</p> 
-                      </div>
-                  </div>
-                </v-card-title>
-                <v-card-actions>
-                  <v-btn dark flat :to="'/view-engine/' + brand.engine_code">
-                    <v-icon left light>arrow_forward</v-icon>
-                        View More
-                    </v-btn>
-                </v-card-actions>
-              </v-flex>
-            </v-layout>
-          </v-container>
-        </v-card>
-      </v-flex>
-    </v-layout>
+    <v-container>
+      <v-layout row wrap justify-space-between>
+        <v-flex xs12 sm10 md5 v-for="brand in brands" :key="brand.id" class="mb-4">
+          <v-card class="blue darken-3">
+            <v-container fluid>
+              <v-layout row>
+                <v-flex xs5 sm4 md5>
+                  <v-card-media
+                      :src="brand.general_engine_image"
+                      height="150px"
+                    ></v-card-media>
+                </v-flex>
+                
+                <v-flex xs7 sm8 md9>
+                  <v-card-title primary-title>
+                    <div>
+                      <h2 class="white--text mb-0">Brand: "{{ brand.brand }}"</h2>
+                      <div class="white--text">
+                        <p class="mb-0">Engine Code: {{ brand.engine_code}}</p>
+                        <p class="mb-0">Built In: {{ brand.built_in}}</p> 
+                        <p class="mb-0">Fuel Type: {{ brand.remark}}</p> 
+                        </div>
+                    </div>
+                  </v-card-title>
+                  <v-card-actions>
+                    <v-btn dark flat :to="'/view-engine/' + brand.engine_code">
+                      <v-icon left light>arrow_forward</v-icon>
+                          View More
+                      </v-btn>
+                  </v-card-actions>
+                </v-flex>
+              </v-layout>
+            </v-container>
+          </v-card>
+        </v-flex>
+      </v-layout>
+    </v-container>
 </template>
 
 <script>

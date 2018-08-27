@@ -40,9 +40,7 @@
     </v-toolbar>
 
     <main>
-      <v-container>
         <router-view></router-view>
-      </v-container>
     </main>
 
   </v-app>
