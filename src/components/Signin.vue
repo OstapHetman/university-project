@@ -63,6 +63,7 @@
 </template>
 
 <script>
+import firebase from "firebase";
 export default {
   name: "signin",
   data() {
@@ -70,6 +71,21 @@ export default {
       email: "",
       password: ""
     };
+  },
+  methods: {
+    onSignin() {
+      firebase
+        .auth()
+        .signInWithEmailAndPassword(this.email, this.password)
+        .then(
+          user => {
+            this.$router.push("/");
+          },
+          err => {
+            alert(err.message);
+          }
+        );
+    }
   }
 };
 </script>
