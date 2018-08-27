@@ -22,7 +22,7 @@ export default new Router({
       component: NewEngine
     },
     {
-      path: "/edit/:engine_id",
+      path: "/edit/:engine_code",
       name: "edit-engine",
       component: EditEngine
     },

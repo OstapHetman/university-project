@@ -5,7 +5,7 @@
     <v-container>
       <v-layout row wrap justify-space-between>
         <v-flex xs12 sm10 md5 v-for="brand in brands" :key="brand.id" class="mb-4">
-          <v-card class="blue darken-3">
+          <v-card class="purple">
             <v-container fluid>
               <v-layout row>
                 <v-flex xs5 sm4 md5>

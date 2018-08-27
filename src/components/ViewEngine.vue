@@ -9,7 +9,7 @@
       </v-flex>
       <v-flex xs12 md5>
         <v-card>
-          <v-toolbar dark color="indigo">
+          <v-toolbar dark color="purple">
             <v-toolbar-title>General Information</v-toolbar-title>
           </v-toolbar>
            <v-list two-line subheader>
@@ -76,11 +76,21 @@
            </v-list>  
         </v-card>
       </v-flex>
-     
-      <v-flex xs2 offset-xs10 class="mt-5">
+    </v-layout>
+
+    <v-layout row wrap justify-end class="mt-4">
+      <v-flex xs12 sm2 d-flex>
         <v-btn color="error" @click="deleteEngine">
           <v-icon left>delete_outline</v-icon>
           Delete
+        </v-btn>
+      </v-flex>
+      <v-flex xs12 sm2 d-flex>
+        <v-btn class="purple white--text" :to="{name: 'edit-engine', params: {engine_id: engine_code}}" >
+          <v-icon left>
+            edit
+          </v-icon>
+            Edit
         </v-btn>
       </v-flex>
     </v-layout>
