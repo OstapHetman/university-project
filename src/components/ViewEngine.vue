@@ -77,7 +77,7 @@
       </v-flex>
      
       <v-flex xs2 offset-xs10 class="mt-5">
-        <v-btn color="error" >
+        <v-btn color="error" @click="deleteEngine">
           <v-icon left>delete_outline</v-icon>
           Delete
         </v-btn>
@@ -146,6 +146,20 @@ export default {
               (this.general_engine_image = doc.data().general_engine_image);
           });
         });
+    },
+    deleteEngine() {
+      if (confirm("Are you sure ?")) {
+        db
+          .collection("brands")
+          .where("engine_code", "==", this.$route.params.engine_code)
+          .get()
+          .then(querySnapshot => {
+            querySnapshot.forEach(doc => {
+              doc.ref.delete();
+              this.$router.push("/");
+            });
+          });
+      }
     }
   }
 };
