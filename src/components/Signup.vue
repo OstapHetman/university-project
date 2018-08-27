@@ -94,6 +94,20 @@ export default {
         : "";
     }
   },
-  methods: {}
+  methods: {
+    onSignup() {
+      firebase
+        .auth()
+        .createUserWithEmailAndPassword(this.email, this.password)
+        .then(
+          user => {
+            this.$router.push("/");
+          },
+          err => {
+            alert(err.message);
+          }
+        );
+    }
+  }
 };
 </script>
