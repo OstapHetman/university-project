@@ -30,9 +30,9 @@
         <v-btn flat v-for="item in menuItems" :key="item.title" :to="item.link">
           <v-icon left>{{ item.icon }}</v-icon>
             {{ item.title }}
-          </v-btn>
+        </v-btn>
 
-          <v-btn flat>
+          <v-btn flat @click="onLogout">
             <v-icon left>exit_to_app</v-icon>
             Logout
           </v-btn>
@@ -47,10 +47,13 @@
 </template>
 
 <script>
+import firebase from "firebase";
 export default {
   data() {
     return {
       sideNav: false,
+      isLoggedIn: false,
+      currentUser: false,
       menuItems: [
         {
           icon: "add_circle_outline",
@@ -61,6 +64,16 @@ export default {
         { icon: "lock_open", title: "Sign In", link: "/signin" }
       ]
     };
+  },
+  methods: {
+    onLogout() {
+      firebase
+        .auth()
+        .signOut()
+        .then(() => {
+          this.$router.push("/signin");
+        });
+    }
   }
 };
 </script>
