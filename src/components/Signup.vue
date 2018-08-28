@@ -1,10 +1,10 @@
 <template>
     <v-container class="mt-5">
-        <!-- <v-layout row v-if="error">
+        <v-layout row v-if="errorText">
             <v-flex xs12 sm6 offset-sm3>
-                <app-alert @dismissed="onDismissed" :text="error.message"></app-alert>
+                <app-alert @dismissed="onDismissed" :text="errorText"></app-alert>
             </v-flex>
-        </v-layout> -->
+        </v-layout>
         <v-layout row>
             <v-flex xs12 sm6 offset-sm3>
                 <v-card>
@@ -60,7 +60,7 @@
                                         type="Submit"
                                         class="purple white--text"
                                         >
-                                        Sign in
+                                        Sign up
                                         </v-btn>
                                     </v-flex>
                                 </v-layout>
@@ -82,7 +82,8 @@ export default {
     return {
       email: "",
       password: "",
-      confirmPassword: ""
+      confirmPassword: "",
+      errorText: null
     };
   },
   computed: {
@@ -102,9 +103,12 @@ export default {
             this.$router.go({ path: this.$router.path });
           },
           err => {
-            alert(err.message);
+            this.errorText = err.message;
           }
         );
+    },
+    onDismissed() {
+      this.errorText = null;
     }
   }
 };
