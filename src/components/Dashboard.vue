@@ -1,9 +1,18 @@
 <template>
-    <!-- <div id="dashboard">
-        <h1>Dashboard</h1>
-    </div> -->
     <v-container>
-      <v-layout row wrap justify-space-between>
+      <v-layout row wrap align-center>
+        <v-flex xs5>
+          <v-select
+            v-model="selectedBrand"
+            value="selectedBrand"
+            :items="selectBrands"
+            label="Select Brand"
+            @input="selectChange()"
+            solo
+          ></v-select>
+        </v-flex>
+      </v-layout> 
+      <v-layout row wrap justify-space-between class="mt-5">
         <v-flex xs12 sm10 md5 v-for="brand in brands" :key="brand.id" class="mb-4">
           <v-card class="purple darken-1">
             <v-container fluid>
@@ -47,7 +56,9 @@ export default {
   name: "dashboard",
   data() {
     return {
-      brands: []
+      brands: [],
+      selectBrands: [],
+      selectedBrand: ""
     };
   },
   created() {
@@ -70,8 +81,59 @@ export default {
             general_engine_image: doc.data().general_engine_image
           };
           this.brands.push(data);
+          this.selectBrands.push("All", ...[data.brand]);
         });
       });
+  },
+  methods: {
+    selectChange: function() {
+      this.brands = [];
+      if (this.selectedBrand !== "All") {
+        db
+          .collection("brands")
+          .where("brand", "==", `${this.selectedBrand}`)
+          .get()
+          .then(querySnapshot => {
+            querySnapshot.forEach(doc => {
+              const data = {
+                id: doc.id,
+                brand: doc.data().brand,
+                built_in: doc.data().built_in,
+                cubic_capacity: doc.data().cubic_capacity,
+                cylinders: doc.data().cylinders,
+                engine_code: doc.data().engine_code,
+                power_hp: doc.data().power_hp,
+                power_kw: doc.data().power_kw,
+                remark: doc.data().remark,
+                general_engine_image: doc.data().general_engine_image
+              };
+              this.brands.push(data);
+            });
+          });
+      } else {
+        db
+          .collection("brands")
+          .orderBy("brand")
+          .get()
+          .then(querySnapshot => {
+            querySnapshot.forEach(doc => {
+              const data = {
+                id: doc.id,
+                brand: doc.data().brand,
+                built_in: doc.data().built_in,
+                cubic_capacity: doc.data().cubic_capacity,
+                cylinders: doc.data().cylinders,
+                engine_code: doc.data().engine_code,
+                power_hp: doc.data().power_hp,
+                power_kw: doc.data().power_kw,
+                remark: doc.data().remark,
+                general_engine_image: doc.data().general_engine_image
+              };
+              this.brands.push(data);
+            });
+          });
+      }
+    }
   }
 };
 </script>
