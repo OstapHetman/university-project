@@ -58,8 +58,6 @@
                                     <v-flex xs12 sm4 d-flex>
                                         <v-btn 
                                         type="Submit"
-                                        :disabled="loading"
-                                        :loading="loading"
                                         class="purple white--text"
                                         >
                                         Sign in
@@ -101,7 +99,7 @@ export default {
         .createUserWithEmailAndPassword(this.email, this.password)
         .then(
           user => {
-            this.$router.push("/");
+            this.$router.go({ path: this.$router.path });
           },
           err => {
             alert(err.message);

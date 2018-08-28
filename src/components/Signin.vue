@@ -1,10 +1,10 @@
 <template>
      <v-container class="mt-5">
-        <v-layout row v-if="error">
+        <!-- <v-layout row v-if="error">
             <v-flex xs12 sm6 offset-sm3>
                 <app-alert @dismissed="onDismissed" :text="error.message"></app-alert>
             </v-flex>
-        </v-layout>
+        </v-layout> -->
         <v-layout row>
             <v-flex xs12 sm6 offset-sm3>
                 <v-card>
@@ -45,8 +45,6 @@
                                     <v-flex xs12 sm4 d-flex>
                                         <v-btn 
                                         type="Submit"
-                                        :disabled="loading"
-                                        :loading="loading"
                                         class="purple white--text"
                                         >
                                         Sign in
@@ -79,7 +77,7 @@ export default {
         .signInWithEmailAndPassword(this.email, this.password)
         .then(
           user => {
-            this.$router.push("/");
+            this.$router.go({ path: this.$router.path });
           },
           err => {
             alert(err.message);
