@@ -155,7 +155,6 @@ export default {
   name: "new-engine",
   data() {
     return {
-      engine_id: null,
       brand: null,
       built_in: null,
       cubic_capacity: null,
@@ -172,7 +171,6 @@ export default {
       db
         .collection("brands")
         .add({
-          engine_id: this.engine_id,
           brand: this.brand,
           built_in: this.built_in,
           cubic_capacity: this.cubic_capacity,
