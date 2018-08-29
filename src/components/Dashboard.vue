@@ -10,13 +10,28 @@
             value="selectedBrand"
             :items="selectBrands"
             label="Select Brand"
-            @input="selectChange()"
+            @input="selectChangeBrand()"
             solo
           ></v-select>
         </v-flex>
+
+        <v-flex xs2 offset-xs2 class="select-year">
+          <v-subheader>Select Year</v-subheader>
+        </v-flex>
+        <v-flex xs3 class="select-year">
+          <v-select
+            v-model="selectedYear"
+            value="selectedYear"
+            :items="selectYears"
+            label="Select Year"
+            @input="selectChangeYear()"
+            solo
+          ></v-select>
+        </v-flex>
+
       </v-layout> 
       <v-layout row wrap justify-space-between class="mt-4">
-        <v-flex xs12 sm10 md5 v-for="brand in brands" :key="brand.id" class="mb-4 brand" :class="brand.brand.toLowerCase().trim()">
+        <v-flex xs12 sm10 md5 v-for="brand in brands" :key="brand.id"  class="mb-4 brand"  :class="[brand.brand.toLowerCase(), brand.built_in.toString()]" >
           <v-card class="white">
             <v-container fluid>
               <v-layout row>
@@ -61,7 +76,9 @@ export default {
     return {
       brands: [],
       selectBrands: [],
-      selectedBrand: ""
+      selectYears: [],
+      selectedBrand: "",
+      selectedYear: ""
     };
   },
   created() {
@@ -85,25 +102,62 @@ export default {
           };
           this.brands.push(data);
           this.selectBrands.push("All", ...[data.brand]);
+          this.selectYears.push("All", ...[data.built_in]);
+          return this.selectYears.sort((a, b) => {
+            return a - b;
+          });
         });
       });
   },
   methods: {
-    selectChange: function() {
+    selectChangeBrand: function() {
       let cards = document.querySelectorAll(".brand");
-      console.log(this.selectedBrand.toLowerCase());
+      const yearSelects = document.querySelectorAll(".select-year");
+
       cards.forEach(card => {
         if (!card.classList.contains(`${this.selectedBrand.toLowerCase()}`)) {
           card.style.display = "none";
+          card.classList.remove("selected");
         } else {
           card.style.display = "block";
+          card.classList.add("selected");
+          yearSelects.forEach(el => {
+            el.style.display = "block";
+          });
         }
         if (this.selectedBrand.toLowerCase() == "all") {
           card.style.display = "block";
+          card.classList.remove("selected");
+          yearSelects.forEach(el => {
+            el.style.display = "none";
+          });
+          return this.selectedBrand;
+        }
+      });
+    },
+    selectChangeYear: function() {
+      let cards = document.querySelectorAll(".brand");
+      const yearSelects = document.querySelectorAll(".select-year");
+      cards.forEach(card => {
+        if (!card.classList.contains(`${Number(this.selectedYear)}`)) {
+          card.style.display = "none";
+        } else if (card.classList.contains("selected")) {
+          card.style.display = "block";
+        }
+        if (this.selectedYear == "All" & card.classList.contains("selected")) {
+          card.style.display = "block";
+          card.classList.remove("selected");
         }
       });
     }
   }
 };
 </script>
+
+<style>
+.select-year {
+  display: none;
+}
+</style>
+
 
