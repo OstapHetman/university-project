@@ -113,21 +113,33 @@ export default {
     selectChangeBrand: function() {
       let cards = document.querySelectorAll(".brand");
       const yearSelects = document.querySelectorAll(".select-year");
+      this.selectYears = [];
 
       cards.forEach(card => {
         if (!card.classList.contains(`${this.selectedBrand.toLowerCase()}`)) {
           card.style.display = "none";
+
           card.classList.remove("selected");
         } else {
           card.style.display = "block";
+
           card.classList.add("selected");
+
           yearSelects.forEach(el => {
             el.style.display = "block";
           });
+
+          this.selectYears.push("All", ...[card.classList.item(7)]);
+          return this.selectYears.sort((a, b) => {
+            return a - b;
+          });
         }
+
         if (this.selectedBrand.toLowerCase() == "all") {
           card.style.display = "block";
+
           card.classList.remove("selected");
+
           yearSelects.forEach(el => {
             el.style.display = "none";
           });
@@ -138,14 +150,19 @@ export default {
     selectChangeYear: function() {
       let cards = document.querySelectorAll(".brand");
       const yearSelects = document.querySelectorAll(".select-year");
+
       cards.forEach(card => {
         if (!card.classList.contains(`${Number(this.selectedYear)}`)) {
           card.style.display = "none";
         } else if (card.classList.contains("selected")) {
           card.style.display = "block";
         }
-        if (this.selectedYear == "All" & card.classList.contains("selected")) {
+        if (
+          (this.selectedYear == "All") &
+          card.classList.contains("selected")
+        ) {
           card.style.display = "block";
+
           card.classList.remove("selected");
         }
       });
