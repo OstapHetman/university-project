@@ -100,8 +100,10 @@ export default {
             remark: doc.data().remark,
             general_engine_image: doc.data().general_engine_image
           };
+
           this.brands.push(data);
           this.selectBrands.push("All", ...[data.brand]);
+
           this.selectYears.push("All", ...[data.built_in]);
           return this.selectYears.sort((a, b) => {
             return a - b;
@@ -114,6 +116,7 @@ export default {
       let cards = document.querySelectorAll(".brand");
       const yearSelects = document.querySelectorAll(".select-year");
       this.selectYears = [];
+      let classArr = [];
 
       cards.forEach(card => {
         if (!card.classList.contains(`${this.selectedBrand.toLowerCase()}`)) {
@@ -129,10 +132,11 @@ export default {
             el.style.display = "block";
           });
 
-          this.selectYears.push("All", ...[card.classList.item(7)]);
-          return this.selectYears.sort((a, b) => {
-            return a - b;
-          });
+          classArr.push(card.classList.item(7));
+
+          this.selectYears.push(...classArr);
+
+          return this.selectYears.sort().unshift("All");
         }
 
         if (this.selectedBrand.toLowerCase() == "all") {
@@ -162,8 +166,6 @@ export default {
           card.classList.contains("selected")
         ) {
           card.style.display = "block";
-
-          card.classList.remove("selected");
         }
       });
     }
