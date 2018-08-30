@@ -137,20 +137,25 @@
             </v-flex>
           </v-layout>
 
-           <v-layout row wrap v-if="addNewChartClicked" v-for="click in clicks" :key="click">
+           <v-layout row wrap v-if="addNewChartClicked" v-for="(click, index) in clicks" :key="click">
             <v-flex xs12 sm6 offset-sm3 class="text-field">
               <v-text-field
                 name="charts"
-                label = "Charts"
-                
-                v-model="charts"
+                label = "Chart Name"
                 required
+                v-model="charts_name[index]"
               >
               </v-text-field>
-              <p> {{click}}</p>
+              <v-text-field
+                name="charts"
+                label = "Chart Link"
+                required
+                v-model="charts_link[index]"
+              >
+              </v-text-field>
             </v-flex>
-             <v-flex xs12 offset-sm3 class="image-field">
-                <img :src="charts" height="150">
+             <v-flex xs12 offset-sm3 class="image-field" v-if="charts_link[index]">
+                <img :src="charts_link[index]" height="150">
             </v-flex>
           </v-layout>
 
@@ -209,7 +214,9 @@ export default {
       chart_image: null,
       charts: [],
       addNewChartClicked: false,
-      clicks: null
+      clicks: [],
+      charts_name: [],
+      charts_link: []
     };
   },
   methods: {
@@ -231,7 +238,7 @@ export default {
     },
     addNewChart() {
       this.addNewChartClicked = true;
-      this.clicks += 1;
+      this.clicks++;
     },
     removeChart() {
       this.clicks--;
