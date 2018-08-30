@@ -78,8 +78,22 @@
       </v-flex>
     </v-layout>
 
+    <v-layout row wrap>
+      <v-flex xs12 >
+        <v-divider class="mt-5 mb-4"></v-divider>
+        <h1 class="text-md-center mb-4 indigo--text">Perfect Engine Charts</h1>
+      </v-flex>
+    </v-layout>
+    
+    <v-layout row wrap justify-center align-center fill-height>
+      <v-flex xs8 v-for="chart in charts" :key="chart.name" class="mb-5">
+        <h1 class="text-md-center">{{ chart.name }}</h1>
+        <img :src="chart.chart" class="image">
+      </v-flex>
+    </v-layout>
+
     <v-layout row wrap justify-end class="mt-4">
-      <v-flex xs12 sm2 d-flex>
+      <v-flex xs12 sm2 d-flex column>
         <v-btn color="error" @click="deleteEngine">
           <v-icon left>delete_outline</v-icon>
           Delete
@@ -112,7 +126,8 @@ export default {
       power_hp: null,
       power_kw: null,
       remark: null,
-      general_engine_image: null
+      general_engine_image: null,
+      charts: null
     };
   },
   beforeRouteEnter(to, from, next) {
@@ -131,7 +146,8 @@ export default {
               (vm.power_hp = doc.data().power_hp),
               (vm.power_kw = doc.data().power_kw),
               (vm.remark = doc.data().remark),
-              (vm.general_engine_image = doc.data().general_engine_image);
+              (vm.general_engine_image = doc.data().general_engine_image),
+              (vm.charts = doc.data().charts);
           });
         });
       });
@@ -155,7 +171,8 @@ export default {
               (this.power_hp = doc.data().power_hp),
               (this.power_kw = doc.data().power_kw),
               (this.remark = doc.data().remark),
-              (this.general_engine_image = doc.data().general_engine_image);
+              (this.general_engine_image = doc.data().general_engine_image),
+              (this.charts = doc.data().charts);
           });
         });
     },
