@@ -138,26 +138,23 @@
             </v-flex>
           </v-layout>
 
-          <v-layout row>
-            <v-flex xs12 sm6 offset-sm3>
+          <v-layout row wrap v-for="chart in charts" :key="chart.name">
+            <v-flex xs12 sm6 offset-sm3 >
               <v-text-field
                 name="charts"
-                label="Charts"
+                :label = "chart.name"
                 id="charts"
-                v-model="charts"
+                v-model="chart.chart"
                 required
               >
               </v-text-field>
             </v-flex>
-          </v-layout>
-
-          <v-layout row v-if="charts">    
-            <v-flex xs12 sm6 offset-sm3>
-                <img :src="charts" height="150">
+             <v-flex xs12 offset-sm3>
+                <img :src="chart.chart" height="150">
             </v-flex>
           </v-layout>
 
-          <v-layout row justify-center>
+          <v-layout row justify-center class="mt-5">
             <v-flex xs12 sm2 d-flex>
               <v-btn class="indigo white--text" type="submit">Update</v-btn>
             </v-flex>
@@ -190,7 +187,9 @@ export default {
       power_kw: null,
       remark: null,
       general_engine_image: null,
-      charts: null
+      charts: [],
+      charts_name: null,
+      chart_image: null
     };
   },
   beforeRouteEnter(to, from, next) {
@@ -211,6 +210,9 @@ export default {
               (vm.remark = doc.data().remark),
               (vm.general_engine_image = doc.data().general_engine_image),
               (vm.charts = doc.data().charts);
+            console.log(vm.charts);
+            // console.log((vm.charts_name = doc.data().charts.name));
+            // console.log((vm.charts_image = doc.data().charts.chart));
           });
         });
       });
