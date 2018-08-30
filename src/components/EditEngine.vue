@@ -187,9 +187,7 @@ export default {
       power_kw: null,
       remark: null,
       general_engine_image: null,
-      charts: [],
-      charts_name: null,
-      chart_image: null
+      charts: []
     };
   },
   beforeRouteEnter(to, from, next) {
@@ -210,9 +208,6 @@ export default {
               (vm.remark = doc.data().remark),
               (vm.general_engine_image = doc.data().general_engine_image),
               (vm.charts = doc.data().charts);
-            console.log(vm.charts);
-            // console.log((vm.charts_name = doc.data().charts.name));
-            // console.log((vm.charts_image = doc.data().charts.chart));
           });
         });
       });

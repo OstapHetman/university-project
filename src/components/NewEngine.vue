@@ -131,6 +131,47 @@
             </v-flex>
           </v-layout>
 
+          <v-layout row wrap>
+            <v-flex xs12 >
+              <h1 class="text-md-center mb-4 indigo--text">Perfect Engine Charts</h1>
+            </v-flex>
+          </v-layout>
+
+           <v-layout row wrap v-if="addNewChartClicked" v-for="click in clicks" :key="click">
+            <v-flex xs12 sm6 offset-sm3 class="text-field">
+              <v-text-field
+                name="charts"
+                label = "Charts"
+                
+                v-model="charts"
+                required
+              >
+              </v-text-field>
+              <p> {{click}}</p>
+            </v-flex>
+             <v-flex xs12 offset-sm3 class="image-field">
+                <img :src="charts" height="150">
+            </v-flex>
+          </v-layout>
+
+          <v-layout row justify-center>
+            <v-flex xs12 sm4 d-flex >
+                <v-btn class="green white--text" @click="addNewChart">
+                    Add new Chart
+                </v-btn>
+
+                 <v-btn class="red white--text" v-if="clicks > 0" @click="removeChart">
+                    Remove Chart
+                </v-btn>
+            </v-flex>
+          </v-layout>
+
+          <v-layout row>
+            <v-flex xs12>
+              <v-divider class="mb-4 mt-5"></v-divider>
+            </v-flex>
+          </v-layout>
+
           <v-layout row justify-center>
             <v-flex xs12 sm2 d-flex>
               <v-btn class="indigo white--text" type="submit">Add Engine</v-btn>
@@ -163,7 +204,12 @@ export default {
       power_hp: null,
       power_kw: null,
       remark: null,
-      general_engine_image: null
+      general_engine_image: null,
+      chart_name: null,
+      chart_image: null,
+      charts: [],
+      addNewChartClicked: false,
+      clicks: null
     };
   },
   methods: {
@@ -182,6 +228,13 @@ export default {
           general_engine_image: this.general_engine_image
         })
         .then(docRef => this.$router.push("/"));
+    },
+    addNewChart() {
+      this.addNewChartClicked = true;
+      this.clicks += 1;
+    },
+    removeChart() {
+      this.clicks--;
     }
   }
 };

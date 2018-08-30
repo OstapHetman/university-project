@@ -87,7 +87,7 @@
     
     <v-layout row wrap justify-center align-center fill-height>
       <v-flex xs8 v-for="chart in charts" :key="chart.name" class="mb-5">
-        <h1 class="text-md-center">{{ chart.name }}</h1>
+        <h1 class="text-md-center mb-2">{{ chart.name }}</h1>
         <img :src="chart.chart" class="image">
       </v-flex>
     </v-layout>
