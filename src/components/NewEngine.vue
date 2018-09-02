@@ -162,10 +162,12 @@
           <v-layout row justify-center>
             <v-flex xs12 sm4 d-flex >
                 <v-btn class="green white--text" @click="addNewChart">
+                   <v-icon left>show_chart</v-icon>
                     Add new Chart
                 </v-btn>
 
                  <v-btn class="red white--text" v-if="charts.length != 0" @click="removeChart">
+                    <v-icon left>delete_outline</v-icon>
                     Remove Chart
                 </v-btn>
             </v-flex>
@@ -179,10 +181,14 @@
 
           <v-layout row justify-center>
             <v-flex xs12 sm2 d-flex>
-              <v-btn class="indigo white--text" type="submit">Add Engine</v-btn>
+              <v-btn class="indigo white--text" type="submit" :disabled="!formIsValid">
+                <v-icon left>control_point</v-icon>
+                Add Engine
+              </v-btn>
             </v-flex>
             <v-flex xs12 sm2 d-flex >
                 <v-btn class="purple white--text" :to="{name: 'dashboard'}">
+                  <v-icon left>cancel</v-icon>
                     Cancel
                 </v-btn>
             </v-flex>
@@ -201,20 +207,32 @@ export default {
   name: "new-engine",
   data() {
     return {
-      brand: null,
-      built_in: null,
-      cubic_capacity: null,
-      cylinders: null,
-      engine_code: null,
-      power_hp: null,
-      power_kw: null,
-      remark: null,
-      general_engine_image: null,
-      chart_name: null,
-      chart_image: null,
+      brand: "",
+      built_in: "",
+      cubic_capacity: "",
+      cylinders: "",
+      engine_code: "",
+      power_hp: "",
+      power_kw: "",
+      remark: "",
+      general_engine_image: "",
       charts: [],
       clicks: []
     };
+  },
+  computed: {
+    formIsValid() {
+      return (
+        this.brand !== "" &&
+        this.built_in !== "" &&
+        this.cubic_capacity !== "" &&
+        this.engine_code !== "" &&
+        this.power_hp !== "" &&
+        this.power_kw !== "" &&
+        this.remark !== "" &&
+        this.general_engine_image !== ""
+      );
+    }
   },
   methods: {
     saveBrand() {

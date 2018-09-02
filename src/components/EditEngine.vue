@@ -163,21 +163,33 @@
           <v-layout row justify-center>
             <v-flex xs12 sm4 d-flex >
                 <v-btn class="green white--text" @click="addNewChart">
+                  <v-icon left>show_chart</v-icon>
                     Add new Chart
                 </v-btn>
 
                  <v-btn class="red white--text" v-if="charts.length > 0 " @click="removeChart">
+                    <v-icon left>delete_outline</v-icon>
                     Remove Chart
                 </v-btn>
             </v-flex>
           </v-layout>
 
+          <v-layout row>
+            <v-flex xs12>
+              <v-divider class="mt-5"></v-divider>
+            </v-flex>
+          </v-layout>
+
           <v-layout row justify-center class="mt-5">
             <v-flex xs12 sm2 d-flex>
-              <v-btn class="indigo white--text" type="submit">Update</v-btn>
+              <v-btn class="indigo white--text" type="submit" :disabled="!formIsValid">
+                <v-icon left>refresh</v-icon>
+                Update
+              </v-btn>
             </v-flex>
             <v-flex xs12 sm2 d-flex >
                 <v-btn class="purple white--text" :to="{name: 'dashboard'}">
+                  <v-icon left>cancel</v-icon>
                     Cancel
                 </v-btn>
             </v-flex>
@@ -234,6 +246,20 @@ export default {
   },
   watch: {
     $route: "fetchData"
+  },
+  computed: {
+    formIsValid() {
+      return (
+        this.brand !== "" &&
+        this.built_in !== "" &&
+        this.cubic_capacity !== "" &&
+        this.engine_code !== "" &&
+        this.power_hp !== "" &&
+        this.power_kw !== "" &&
+        this.remark !== "" &&
+        this.general_engine_image !== ""
+      );
+    }
   },
   methods: {
     fetchData() {
