@@ -99,7 +99,17 @@
     <v-layout row wrap justify-center align-center fill-height>
       <v-flex xs8 v-for="chart in charts" :key="chart.name" class="mb-5">
         <h1 class="text-md-center mb-2">{{ chart.name }}</h1>
-        <img :src="chart.chart" class="image">
+        <img :src="chart.chart" class="image-chart" @click="openModal">
+
+          <v-dialog v-model="dialog" max-width="80%">
+            <v-card>
+                <img
+                  :src="modal_image"
+                  class="modal-image"
+                />
+            </v-card>
+         </v-dialog>
+
       </v-flex>
     </v-layout>
 
@@ -138,7 +148,9 @@ export default {
       power_kw: null,
       remark: null,
       general_engine_image: null,
-      charts: null
+      charts: null,
+      dialog: false,
+      modal_image: ""
     };
   },
   beforeRouteEnter(to, from, next) {
@@ -200,15 +212,30 @@ export default {
             });
           });
       }
+    },
+    openModal(event) {
+      this.dialog = true;
+      this.modal_image = event.target.getAttribute("src");
     }
   }
 };
 </script>
 
 <style>
-.image {
+.image,
+.image-chart {
   width: 100%;
   height: auto;
+}
+.image-chart:hover {
+  cursor: url("../assets/zoom_in.svg"), auto;
+}
+.modal-image {
+  width: 100%;
+  height: 100%;
+}
+.btn {
+  position: absolute;
 }
 .v-list--two-line .v-list__tile {
   height: 50px !important;
