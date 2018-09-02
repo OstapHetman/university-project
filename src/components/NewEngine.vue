@@ -137,7 +137,7 @@
             </v-flex>
           </v-layout>
 
-           <v-layout row wrap  v-for="(chart, index) in charts" :key="index">
+           <v-layout row wrap v-for="(chart, index) in charts" :key="index">
             <v-flex xs12 sm6 offset-sm3 class="text-field">
               <v-text-field
                 name="charts"
@@ -165,7 +165,7 @@
                     Add new Chart
                 </v-btn>
 
-                 <v-btn class="red white--text" v-if="clicks > 0" @click="removeChart">
+                 <v-btn class="red white--text" v-if="charts.length != 0" @click="removeChart">
                     Remove Chart
                 </v-btn>
             </v-flex>
@@ -213,12 +213,7 @@ export default {
       chart_name: null,
       chart_image: null,
       charts: [],
-      addNewChartClicked: false,
       clicks: []
-      // charts_obj: {
-      //   name: null,
-      //   chart: null
-      // }
     };
   },
   methods: {
@@ -242,11 +237,9 @@ export default {
     },
     addNewChart() {
       this.charts.push({ name: "", chart: "" });
-      this.addNewChartClicked = true;
-      this.clicks++;
     },
     removeChart() {
-      this.clicks--;
+      this.charts.splice(-1, 1);
     }
   }
 };
