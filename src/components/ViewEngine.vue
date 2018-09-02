@@ -85,7 +85,7 @@
       </v-flex>
     </v-layout>
 
-    <v-layout row wrap justify-center v-if="!charts">
+    <v-layout row wrap justify-center v-if="charts == null || charts.length === 0">
       <v-flex xs6 >
         <v-alert
         :value="true"

@@ -138,19 +138,37 @@
             </v-flex>
           </v-layout>
 
-          <v-layout row wrap v-for="chart in charts" :key="chart.name">
-            <v-flex xs12 sm6 offset-sm3 >
+          <v-layout row wrap v-for="(chart, index) in charts" :key="index">
+            <v-flex xs12 sm6 offset-sm3 class="text-field">
               <v-text-field
                 name="charts"
-                :label = "chart.name"
-                id="charts"
-                v-model="chart.chart"
+                label = "Chart Name"
                 required
+                v-model="chart.name"
+              >
+              </v-text-field>
+              <v-text-field
+                name="charts"
+                label = "Chart Link"
+                required
+                v-model="chart.chart"
               >
               </v-text-field>
             </v-flex>
-             <v-flex xs12 offset-sm3>
+             <v-flex xs12 offset-sm3 class="image-field" v-if="chart.chart">
                 <img :src="chart.chart" height="150">
+            </v-flex>
+          </v-layout>
+
+          <v-layout row justify-center>
+            <v-flex xs12 sm4 d-flex >
+                <v-btn class="green white--text" @click="addNewChart">
+                    Add new Chart
+                </v-btn>
+
+                 <v-btn class="red white--text" v-if="charts.length > 0 " @click="removeChart">
+                    Remove Chart
+                </v-btn>
             </v-flex>
           </v-layout>
 
@@ -206,8 +224,10 @@ export default {
               (vm.power_hp = doc.data().power_hp),
               (vm.power_kw = doc.data().power_kw),
               (vm.remark = doc.data().remark),
-              (vm.general_engine_image = doc.data().general_engine_image),
-              (vm.charts = doc.data().charts);
+              (vm.general_engine_image = doc.data().general_engine_image);
+            if (doc.data().charts !== undefined) {
+              vm.charts = doc.data().charts;
+            }
           });
         });
       });
@@ -231,10 +251,18 @@ export default {
               (this.power_hp = doc.data().power_hp),
               (this.power_kw = doc.data().power_kw),
               (this.remark = doc.data().remark),
-              (this.general_engine_image = doc.data().general_engine_image),
-              (this.charts = doc.data().charts);
+              (this.general_engine_image = doc.data().general_engine_image);
+            if (doc.data().charts !== undefined) {
+              this.charts = doc.data().charts;
+            }
           });
         });
+    },
+    addNewChart() {
+      this.charts.push({ name: "", chart: "" });
+    },
+    removeChart() {
+      this.charts.splice(-1, 1);
     },
     updateBrand() {
       db
