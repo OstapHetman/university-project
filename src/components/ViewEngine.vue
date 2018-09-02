@@ -84,6 +84,17 @@
         <h1 class="text-md-center mb-4 indigo--text">Perfect Engine Charts</h1>
       </v-flex>
     </v-layout>
+
+    <v-layout row wrap justify-center v-if="!charts">
+      <v-flex xs6 >
+        <v-alert
+        :value="true"
+        type="error"
+        >
+          <h2 class="text-xs-center">There Are No Charts For This Engine</h2>  
+        </v-alert>
+      </v-flex>
+    </v-layout>
     
     <v-layout row wrap justify-center align-center fill-height>
       <v-flex xs8 v-for="chart in charts" :key="chart.name" class="mb-5">
