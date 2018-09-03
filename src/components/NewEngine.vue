@@ -16,6 +16,7 @@
                 id="brand"
                 v-model="brand"
                 required
+                clearable
               >
               </v-text-field>
             </v-flex>
@@ -29,6 +30,7 @@
                 id="general_engine_image"
                 v-model="general_engine_image"
                 required
+                clearable
               >
               </v-text-field>
             </v-flex>
@@ -48,6 +50,7 @@
                 id="engine_code"
                 v-model="engine_code"
                 required
+                clearable
               >
               </v-text-field>
             </v-flex>
@@ -61,6 +64,7 @@
                 id="cubic_capacity"
                 v-model="cubic_capacity"
                 required
+                clearable
               >
               </v-text-field>
             </v-flex>
@@ -74,6 +78,7 @@
                 id="cylinders"
                 v-model="cylinders"
                 required
+                clearable
               >
               </v-text-field>
             </v-flex>
@@ -87,6 +92,7 @@
                 id="built_in"
                 v-model="built_in"
                 required
+                clearable
               >
               </v-text-field>
             </v-flex>
@@ -100,6 +106,7 @@
                 id="power_hp"
                 v-model="power_hp"
                 required
+                clearable
               >
               </v-text-field>
             </v-flex>
@@ -113,6 +120,7 @@
                 id="power_kw"
                 v-model="power_kw"
                 required
+                clearable
               >
               </v-text-field>
             </v-flex>
@@ -126,6 +134,7 @@
                 id="remark"
                 v-model="remark"
                 required
+                clearable
               >
               </v-text-field>
             </v-flex>
@@ -144,6 +153,7 @@
                 label = "Chart Name"
                 required
                 v-model="chart.name"
+                clearable
               >
               </v-text-field>
               <v-text-field
@@ -151,6 +161,7 @@
                 label = "Chart Link"
                 required
                 v-model="chart.chart"
+                clearable
               >
               </v-text-field>
             </v-flex>

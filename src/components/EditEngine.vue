@@ -7,195 +7,206 @@
     </v-layout>
     <v-layout row>
       <v-flex xs12 @submit.prevent="updateBrand">
-        <form class="mt-3">
-          <v-layout row>
-            <v-flex xs12 sm6 offset-sm3>
-              <v-text-field
-                name="brand"
-                label="Brand"
-                id="brand"
-                v-model="brand"
-                required
-              >
-              </v-text-field>
-            </v-flex>
-          </v-layout>
+          <form class="mt-3">
+            <v-layout row>
+              <v-flex xs12 sm6 offset-sm3>
+                  <v-text-field
+                    name="brand"
+                    label="Brand"
+                    id="brand"
+                    v-model="brand"
+                    required
+                    clearable
+                  >
+                  </v-text-field>
+              </v-flex>
+            </v-layout>
 
-          <v-layout row>
-            <v-flex xs12 sm6 offset-sm3>
-              <v-text-field
-                name="general_engine_image"
-                label="General Engine Image"
-                id="general_engine_image"
-                v-model="general_engine_image"
-                required
-              >
-              </v-text-field>
-            </v-flex>
-          </v-layout>
+            <v-layout row>
+              <v-flex xs12 sm6 offset-sm3>
+                <v-text-field
+                  name="general_engine_image"
+                  label="General Engine Image"
+                  id="general_engine_image"
+                  v-model="general_engine_image"
+                  required
+                  clearable
+                >
+                </v-text-field>
+              </v-flex>
+            </v-layout>
 
-          <v-layout row v-if="general_engine_image">    
-            <v-flex xs12 sm6 offset-sm3>
-                <img :src="general_engine_image" height="150">
-            </v-flex>
-          </v-layout>
+            <v-layout row v-if="general_engine_image">    
+              <v-flex xs12 sm6 offset-sm3>
+                  <img :src="general_engine_image" height="150">
+              </v-flex>
+            </v-layout>
 
-          <v-layout row>
-            <v-flex xs12 sm6 offset-sm3>
-              <v-text-field
-                name="engine_code"
-                label="Engine Code"
-                id="engine_code"
-                v-model="engine_code"
-                required
-              >
-              </v-text-field>
-            </v-flex>
-          </v-layout>
+            <v-layout row>
+              <v-flex xs12 sm6 offset-sm3>
+                <v-text-field
+                  name="engine_code"
+                  label="Engine Code"
+                  id="engine_code"
+                  v-model="engine_code"
+                  required
+                  clearable
+                >
+                </v-text-field>
+              </v-flex>
+            </v-layout>
 
-          <v-layout row>
-            <v-flex xs12 sm6 offset-sm3>
-              <v-text-field
-                name="cubic_capacity"
-                label="Cubic Capacity"
-                id="cubic_capacity"
-                v-model="cubic_capacity"
-                required
-              >
-              </v-text-field>
-            </v-flex>
-          </v-layout>
+            <v-layout row>
+              <v-flex xs12 sm6 offset-sm3>
+                <v-text-field
+                  name="cubic_capacity"
+                  label="Cubic Capacity"
+                  id="cubic_capacity"
+                  v-model="cubic_capacity"
+                  required
+                  clearable
+                >
+                </v-text-field>
+              </v-flex>
+            </v-layout>
 
-           <v-layout row>
-            <v-flex xs12 sm6 offset-sm3>
-              <v-text-field
-                name="cylinders"
-                label="Cylinders"
-                id="cylinders"
-                v-model="cylinders"
-                required
-              >
-              </v-text-field>
-            </v-flex>
-          </v-layout>
+            <v-layout row>
+              <v-flex xs12 sm6 offset-sm3>
+                <v-text-field
+                  name="cylinders"
+                  label="Cylinders"
+                  id="cylinders"
+                  v-model="cylinders"
+                  required
+                  clearable
+                >
+                </v-text-field>
+              </v-flex>
+            </v-layout>
 
-           <v-layout row>
-            <v-flex xs12 sm6 offset-sm3>
-              <v-text-field
-                name="built_in"
-                label="Built In"
-                id="built_in"
-                v-model="built_in"
-                required
-              >
-              </v-text-field>
-            </v-flex>
-          </v-layout>
+            <v-layout row>
+              <v-flex xs12 sm6 offset-sm3>
+                <v-text-field
+                  name="built_in"
+                  label="Built In"
+                  id="built_in"
+                  v-model="built_in"
+                  required
+                  clearable
+                >
+                </v-text-field>
+              </v-flex>
+            </v-layout>
 
-          <v-layout row>
-            <v-flex xs12 sm6 offset-sm3>
-              <v-text-field
-                name="power_hp"
-                label="Power (hp)"
-                id="power_hp"
-                v-model="power_hp"
-                required
-              >
-              </v-text-field>
-            </v-flex>
-          </v-layout>
+            <v-layout row>
+              <v-flex xs12 sm6 offset-sm3>
+                <v-text-field
+                  name="power_hp"
+                  label="Power (hp)"
+                  id="power_hp"
+                  v-model="power_hp"
+                  required
+                  clearable
+                >
+                </v-text-field>
+              </v-flex>
+            </v-layout>
 
-          <v-layout row>
-            <v-flex xs12 sm6 offset-sm3>
-              <v-text-field
-                name="power_kw"
-                label="Power (kw)"
-                id="power_kw"
-                v-model="power_kw"
-                required
-              >
-              </v-text-field>
-            </v-flex>
-          </v-layout>
+            <v-layout row>
+              <v-flex xs12 sm6 offset-sm3>
+                <v-text-field
+                  name="power_kw"
+                  label="Power (kw)"
+                  id="power_kw"
+                  v-model="power_kw"
+                  required
+                  clearable
+                >
+                </v-text-field>
+              </v-flex>
+            </v-layout>
 
-          <v-layout row>
-            <v-flex xs12 sm6 offset-sm3>
-              <v-text-field
-                name="remark"
-                label="Fuel Type"
-                id="remark"
-                v-model="remark"
-                required
-              >
-              </v-text-field>
-            </v-flex>
-          </v-layout>
+            <v-layout row>
+              <v-flex xs12 sm6 offset-sm3>
+                <v-text-field
+                  name="remark"
+                  label="Fuel Type"
+                  id="remark"
+                  v-model="remark"
+                  required
+                  clearable
+                >
+                </v-text-field>
+              </v-flex>
+            </v-layout>
 
-          <v-layout row wrap>
-            <v-flex xs12 >
-              <v-divider class="mt-5 mb-4"></v-divider>
-              <h1 class="text-md-center mb-4 indigo--text">Perfect Engine Charts</h1>
-            </v-flex>
-          </v-layout>
+            <v-layout row wrap>
+              <v-flex xs12 >
+                <v-divider class="mt-5 mb-4"></v-divider>
+                <h1 class="text-md-center mb-4 indigo--text">Perfect Engine Charts</h1>
+              </v-flex>
+            </v-layout>
 
-          <v-layout row wrap v-for="(chart, index) in charts" :key="index">
-            <v-flex xs12 sm6 offset-sm3 class="text-field">
-              <v-text-field
-                name="charts"
-                label = "Chart Name"
-                required
-                v-model="chart.name"
-              >
-              </v-text-field>
-              <v-text-field
-                name="charts"
-                label = "Chart Link"
-                required
-                v-model="chart.chart"
-              >
-              </v-text-field>
-            </v-flex>
-             <v-flex xs12 offset-sm3 class="image-field" v-if="chart.chart">
-                <img :src="chart.chart" height="150">
-            </v-flex>
-          </v-layout>
+            <v-layout row wrap v-for="(chart, index) in charts" :key="index">
+              <v-flex xs12 sm6 offset-sm3 class="text-field">
+                <v-text-field
+                  name="charts"
+                  label = "Chart Name"
+                  required
+                  v-model="chart.name"
+                  clearable
+                >
+                </v-text-field>
+                <v-text-field
+                  name="charts"
+                  label = "Chart Link"
+                  required
+                  v-model="chart.chart"
+                  clearable
+                >
+                </v-text-field>
+              </v-flex>
+              <v-flex xs12 offset-sm3 class="image-field" v-if="chart.chart">
+                  <img :src="chart.chart" height="150">
+              </v-flex>
+            </v-layout>
 
-          <v-layout row justify-center>
-            <v-flex xs12 sm4 d-flex >
-                <v-btn class="green white--text" @click="addNewChart">
-                  <v-icon left>show_chart</v-icon>
-                    Add new Chart
+            <v-layout row justify-center>
+              <v-flex xs12 sm4 d-flex >
+                  <v-btn class="green white--text" @click="addNewChart">
+                    <v-icon left>show_chart</v-icon>
+                      Add new Chart
+                  </v-btn>
+
+                  <v-btn class="red white--text" v-if="charts.length > 0 " @click="removeChart">
+                      <v-icon left>delete_outline</v-icon>
+                      Remove Chart
+                  </v-btn>
+              </v-flex>
+            </v-layout>
+
+            <v-layout row>
+              <v-flex xs12>
+                <v-divider class="mt-5"></v-divider>
+              </v-flex>
+            </v-layout>
+
+            <v-layout row justify-center class="mt-5">
+              <v-flex xs12 sm2 d-flex>
+                <v-btn class="indigo white--text" type="submit" :disabled="!formIsValid">
+                  <v-icon left>refresh</v-icon>
+                  Update
                 </v-btn>
+              </v-flex>
+              <v-flex xs12 sm2 d-flex >
+                  <v-btn class="purple white--text" :to="{name: 'dashboard'}">
+                    <v-icon left>cancel</v-icon>
+                      Cancel
+                  </v-btn>
+              </v-flex>
+            </v-layout>
 
-                 <v-btn class="red white--text" v-if="charts.length > 0 " @click="removeChart">
-                    <v-icon left>delete_outline</v-icon>
-                    Remove Chart
-                </v-btn>
-            </v-flex>
-          </v-layout>
-
-          <v-layout row>
-            <v-flex xs12>
-              <v-divider class="mt-5"></v-divider>
-            </v-flex>
-          </v-layout>
-
-          <v-layout row justify-center class="mt-5">
-            <v-flex xs12 sm2 d-flex>
-              <v-btn class="indigo white--text" type="submit" :disabled="!formIsValid">
-                <v-icon left>refresh</v-icon>
-                Update
-              </v-btn>
-            </v-flex>
-            <v-flex xs12 sm2 d-flex >
-                <v-btn class="purple white--text" :to="{name: 'dashboard'}">
-                  <v-icon left>cancel</v-icon>
-                    Cancel
-                </v-btn>
-            </v-flex>
-          </v-layout>
-
-        </form>
+          </form>
       </v-flex>
     </v-layout>
   </v-container>
