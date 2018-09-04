@@ -23,16 +23,19 @@
           </v-layout>
 
           <v-layout row>
-            <v-flex xs12 sm6 offset-sm3>
-              <v-text-field
-                name="general_engine_image"
-                label="General Engine Image"
-                id="general_engine_image"
-                v-model="general_engine_image"
-                required
-                clearable
-              >
-              </v-text-field>
+            <v-flex xs12 sm6 offset-sm3 d-flex>
+              <v-flex xs12 sm4>
+                <v-subheader class="px-0">General Engine Image</v-subheader>
+              </v-flex>
+              <v-flex xs12 sm8>
+                <v-btn raised dark class="blue darken-4" @click="onPickFile">Upload Image</v-btn>
+                <input 
+                type="file" 
+                style="display: none" 
+                ref="fileInput" 
+                accept="image/*"
+                @change="onFilePicked">
+              </v-flex>
             </v-flex>
           </v-layout>
 
@@ -156,14 +159,30 @@
                 clearable
               >
               </v-text-field>
-              <v-text-field
+
+              <v-layout row wrap class="mb-5">
+                <v-flex xs12 sm2>
+                  <v-subheader class="px-0">Chart</v-subheader>
+                </v-flex>
+                <v-flex xs12 sm8>
+                  <v-btn raised dark class="blue darken-4" @click="onPickChart('chartInput' + index.toString())">Upload Chart</v-btn>
+                  <input 
+                  type="file" 
+                  style="display: none" 
+                  :ref="'chartInput' + index.toString()" 
+                  accept="image/*"
+                  @change="onChartPicked">
+                </v-flex>
+              </v-layout>
+               
+              <!-- <v-text-field
                 name="charts"
                 label = "Chart Link"
                 required
                 v-model="chart.chart"
                 clearable
               >
-              </v-text-field>
+              </v-texmarkt-field> -->
             </v-flex>
              <v-flex xs12 offset-sm3 class="image-field" v-if="chart.chart">
                 <img :src="chart.chart" height="150">
@@ -246,6 +265,44 @@ export default {
     }
   },
   methods: {
+    onPickFile() {
+      this.$refs.fileInput.click();
+    },
+    onFilePicked(event) {
+      const files = event.target.files;
+      let fileName = files[0].name;
+      if (fileName.lastIndexOf(".") <= 0) {
+        return alert("Please add a valid file!");
+      }
+      const fileReader = new FileReader();
+      fileReader.addEventListener("load", () => {
+        this.general_engine_image = fileReader.result;
+      });
+      fileReader.readAsDataURL(files[0]);
+      this.general_engine_image = files[0];
+    },
+    onPickChart(ref) {
+      this.$refs[ref][0].click();
+      // this.$refs.click();
+    },
+    onChartPicked(event) {
+      const files = event.target.files;
+      let fileName = files[0].name;
+      if (fileName.lastIndexOf(".") <= 0) {
+        return alert("Please add a valid file!");
+      }
+      const fileReader = new FileReader();
+
+      fileReader.addEventListener("load", () => {
+        this.charts.map(entry => {
+          entry.chart = fileReader.result;
+        });
+      });
+      fileReader.readAsDataURL(files[0]);
+      this.charts.map(entry => {
+        entry.chart = files[0];
+      });
+    },
     saveBrand() {
       db
         .collection("brands")
