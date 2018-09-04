@@ -10,136 +10,154 @@
         <form class="mt-3">
           <v-layout row>
             <v-flex xs12 sm6 offset-sm3>
-              <v-text-field
-                name="brand"
-                label="Brand"
-                id="brand"
-                v-model="brand"
-                required
-                clearable
-              >
-              </v-text-field>
+              <v-card class="px-3 py-3 mb-3">
+                <v-text-field
+                  name="brand"
+                  label="Brand"
+                  id="brand"
+                  v-model="brand"
+                  required
+                  clearable
+                >
+                </v-text-field>
+              </v-card>
             </v-flex>
           </v-layout>
 
           <v-layout row>
             <v-flex xs12 sm6 offset-sm3 d-flex>
-              <v-flex xs12 sm4>
-                <v-subheader class="px-0">General Engine Image</v-subheader>
-              </v-flex>
-              <v-flex xs12 sm8>
-                <v-btn raised dark class="blue darken-4" @click="onPickFile">Upload Image</v-btn>
-                <input 
-                type="file" 
-                style="display: none" 
-                ref="fileInput" 
-                accept="image/*"
-                @change="onFilePicked">
-              </v-flex>
+              <v-card class="px-3 py-3 mb-3">
+                <v-flex xs12 sm4>
+                  <v-subheader class="px-0">General Engine Image</v-subheader>
+                </v-flex>
+                <v-flex xs12 sm8>
+                  <v-btn raised dark class="blue darken-4" @click="onPickFile">Upload Image</v-btn>
+                  <input 
+                  type="file" 
+                  style="display: none" 
+                  ref="fileInput" 
+                  accept="image/*"
+                  @change="onFilePicked">
+                </v-flex>
+              </v-card>
             </v-flex>
           </v-layout>
 
           <v-layout row v-if="general_engine_image">    
-            <v-flex xs12 sm6 offset-sm3>
-                <img :src="general_engine_image" height="150">
+            <v-flex xs12>
+                <img :src="general_engine_image" height="200" class="d-block mx-auto">
             </v-flex>
           </v-layout>
 
           <v-layout row>
             <v-flex xs12 sm6 offset-sm3>
-              <v-text-field
-                name="engine_code"
-                label="Engine Code"
-                id="engine_code"
-                v-model="engine_code"
-                required
-                clearable
-              >
-              </v-text-field>
+              <v-card class="px-3 py-3 mb-3">
+                <v-text-field
+                  name="engine_code"
+                  label="Engine Code"
+                  id="engine_code"
+                  v-model="engine_code"
+                  required
+                  clearable
+                >
+                </v-text-field>
+              </v-card>
             </v-flex>
           </v-layout>
 
           <v-layout row>
             <v-flex xs12 sm6 offset-sm3>
-              <v-text-field
-                name="cubic_capacity"
-                label="Cubic Capacity"
-                id="cubic_capacity"
-                v-model="cubic_capacity"
-                required
-                clearable
-              >
-              </v-text-field>
+              <v-card class="px-3 py-3 mb-3">
+                <v-text-field
+                  name="cubic_capacity"
+                  label="Cubic Capacity"
+                  id="cubic_capacity"
+                  v-model="cubic_capacity"
+                  required
+                  clearable
+                >
+                </v-text-field>
+              </v-card>
             </v-flex>
           </v-layout>
 
            <v-layout row>
             <v-flex xs12 sm6 offset-sm3>
-              <v-text-field
-                name="cylinders"
-                label="Cylinders"
-                id="cylinders"
-                v-model="cylinders"
-                required
-                clearable
-              >
-              </v-text-field>
+              <v-card class="px-3 py-3 mb-3">
+                <v-text-field
+                  name="cylinders"
+                  label="Cylinders"
+                  id="cylinders"
+                  v-model="cylinders"
+                  required
+                  clearable
+                >
+                </v-text-field>
+              </v-card>
             </v-flex>
           </v-layout>
 
            <v-layout row>
             <v-flex xs12 sm6 offset-sm3>
-              <v-text-field
-                name="built_in"
-                label="Built In"
-                id="built_in"
-                v-model="built_in"
-                required
-                clearable
-              >
-              </v-text-field>
+              <v-card class="px-3 py-3 mb-3">
+                <v-text-field
+                  name="built_in"
+                  label="Built In"
+                  id="built_in"
+                  v-model="built_in"
+                  required
+                  clearable
+                >
+                </v-text-field>
+              </v-card>
             </v-flex>
           </v-layout>
 
           <v-layout row>
             <v-flex xs12 sm6 offset-sm3>
-              <v-text-field
-                name="power_hp"
-                label="Power (hp)"
-                id="power_hp"
-                v-model="power_hp"
-                required
-                clearable
-              >
-              </v-text-field>
+              <v-card class="px-3 py-3 mb-3">
+                <v-text-field
+                  name="power_hp"
+                  label="Power (hp)"
+                  id="power_hp"
+                  v-model="power_hp"
+                  required
+                  clearable
+                >
+                </v-text-field>
+              </v-card>
             </v-flex>
           </v-layout>
 
           <v-layout row>
             <v-flex xs12 sm6 offset-sm3>
-              <v-text-field
-                name="power_kw"
-                label="Power (kw)"
-                id="power_kw"
-                v-model="power_kw"
-                required
-                clearable
-              >
-              </v-text-field>
+              <v-card class="px-3 py-3 mb-3">
+                <v-text-field
+                  name="power_kw"
+                  label="Power (kw)"
+                  id="power_kw"
+                  v-model="power_kw"
+                  required
+                  clearable
+                >
+                </v-text-field>
+              </v-card>
             </v-flex>
           </v-layout>
 
           <v-layout row>
             <v-flex xs12 sm6 offset-sm3>
-              <v-text-field
-                name="remark"
-                label="Fuel Type"
-                id="remark"
-                v-model="remark"
-                required
-                clearable
-              >
-              </v-text-field>
+              <v-card class="px-3 py-3 mb-3">
+                <v-text-field
+                  name="remark"
+                  label="Fuel Type"
+                  id="remark"
+                  v-model="remark"
+                  required
+                  clearable
+                >
+                </v-text-field>
+              </v-card>
             </v-flex>
           </v-layout>
 
@@ -151,41 +169,34 @@
 
            <v-layout row wrap v-for="(chart, index) in charts" :key="index">
             <v-flex xs12 sm6 offset-sm3 class="text-field">
-              <v-text-field
-                name="charts"
-                label = "Chart Name"
-                required
-                v-model="chart.name"
-                clearable
-              >
-              </v-text-field>
+              <v-card class="px-3 py-3 mb-5">
+                <v-text-field
+                  name="charts"
+                  label = "Chart Name"
+                  required
+                  v-model="chart.name"
+                  clearable
+                >
+                </v-text-field>
 
-              <v-layout row wrap class="mb-5">
-                <v-flex xs12 sm2>
-                  <v-subheader class="px-0">Chart</v-subheader>
-                </v-flex>
-                <v-flex xs12 sm8>
-                  <v-btn raised dark class="blue darken-4" @click="onPickChart('chartInput' + index.toString())">Upload Chart</v-btn>
-                  <input 
-                  type="file" 
-                  style="display: none" 
-                  :ref="'chartInput' + index.toString()" 
-                  accept="image/*"
-                  @change="onChartPicked">
-                </v-flex>
-              </v-layout>
-               
-              <!-- <v-text-field
-                name="charts"
-                label = "Chart Link"
-                required
-                v-model="chart.chart"
-                clearable
-              >
-              </v-texmarkt-field> -->
+                <v-layout row wrap class="mb-2">
+                  <v-flex xs12 sm2>
+                    <v-subheader class="px-0">Chart</v-subheader>
+                  </v-flex>
+                  <v-flex xs12 sm8>
+                    <v-btn raised dark class="blue darken-4" @click="onPickChart('chartInput' + index.toString())">Upload Chart</v-btn>
+                    <input 
+                    type="file" 
+                    style="display: none" 
+                    :ref="'chartInput' + index.toString()" 
+                    accept="image/*"
+                    @change="onChartPicked">
+                  </v-flex>
+                </v-layout>
+              </v-card>
             </v-flex>
-             <v-flex xs12 offset-sm3 class="image-field" v-if="chart.chart">
-                <img :src="chart.chart" height="150">
+             <v-flex xs12 class="image-field mb-5" v-if="chart.chart">
+                <img :src="chart.chart" height="150" class="d-block mx-auto">
             </v-flex>
           </v-layout>
 
