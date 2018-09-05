@@ -25,8 +25,8 @@
           </v-layout>
 
           <v-layout row>
-            <v-flex xs12 sm6 offset-sm3 d-flex>
-              <v-card class="px-3 py-3 mb-3">
+            <v-flex xs12 sm6 offset-sm3 >
+              <v-card class="px-3 py-3 mb-3 d-flex justify-center">
                 <v-flex xs12 sm4>
                   <v-subheader class="px-0">General Engine Image</v-subheader>
                 </v-flex>

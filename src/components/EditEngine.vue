@@ -24,21 +24,26 @@
 
             <v-layout row>
               <v-flex xs12 sm6 offset-sm3>
-                <v-text-field
-                  name="general_engine_image"
-                  label="General Engine Image"
-                  id="general_engine_image"
-                  v-model="general_engine_image"
-                  required
-                  clearable
-                >
-                </v-text-field>
+                <v-card class="px-3 py-3 mb-3 d-flex justify-center">
+                <v-flex xs12 sm4>
+                  <v-subheader class="px-0">General Engine Image</v-subheader>
+                </v-flex>
+                <v-flex xs12 sm8>
+                  <v-btn raised dark class="blue darken-4" @click="onPickFile">Upload Image</v-btn>
+                  <input 
+                  type="file" 
+                  style="display: none" 
+                  ref="fileInput" 
+                  accept="image/*"
+                  @change="onFilePicked">
+                </v-flex>
+              </v-card>
               </v-flex>
             </v-layout>
 
             <v-layout row v-if="general_engine_image">    
               <v-flex xs12 sm6 offset-sm3>
-                  <img :src="general_engine_image" height="150">
+                  <img :src="general_engine_image" height="200" class="d-block mx-auto">
               </v-flex>
             </v-layout>
 
@@ -294,6 +299,22 @@ export default {
             }
           });
         });
+    },
+    onPickFile() {
+      this.$refs.fileInput.click();
+    },
+    onFilePicked(event) {
+      const files = event.target.files;
+      let fileName = files[0].name;
+      if (fileName.lastIndexOf(".") <= 0) {
+        return alert("Please add a valid file!");
+      }
+      const fileReader = new FileReader();
+      fileReader.addEventListener("load", () => {
+        this.general_engine_image = fileReader.result;
+      });
+      fileReader.readAsDataURL(files[0]);
+      this.general_engine_image = files[0];
     },
     addNewChart() {
       this.charts.push({ name: "", chart: "" });
