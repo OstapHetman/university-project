@@ -184,18 +184,22 @@
                     <v-subheader class="px-0">Chart</v-subheader>
                   </v-flex>
                   <v-flex xs12 sm8>
-                    <v-btn raised dark class="blue darken-4" @click="onPickChart('chartInput' + index.toString())">Upload Chart</v-btn>
+                    <v-btn raised :disabled="!chart.name" class="blue darken-4 white--text" @click="onPickChart('chartInput' + index.toString())">
+                      <v-icon left>attachment</v-icon>
+                      Upload Chart
+                    </v-btn>
                     <input 
                     type="file" 
                     style="display: none" 
                     :ref="'chartInput' + index.toString()" 
                     accept="image/*"
-                    @change="onChartPicked">
+                    @change="onChartPicked($event,index)">
                   </v-flex>
                 </v-layout>
               </v-card>
             </v-flex>
              <v-flex xs12 class="image-field mb-5" v-if="chart.chart">
+            
                 <img :src="chart.chart" height="150" class="d-block mx-auto">
             </v-flex>
           </v-layout>
@@ -257,8 +261,7 @@ export default {
       power_kw: "",
       remark: "",
       general_engine_image: "",
-      charts: [],
-      clicks: []
+      charts: []
     };
   },
   computed: {
@@ -294,25 +297,22 @@ export default {
     },
     onPickChart(ref) {
       this.$refs[ref][0].click();
-      // this.$refs.click();
     },
-    onChartPicked(event) {
+    onChartPicked(event, index) {
       const files = event.target.files;
       let fileName = files[0].name;
+      let newObj = {};
+
       if (fileName.lastIndexOf(".") <= 0) {
         return alert("Please add a valid file!");
       }
       const fileReader = new FileReader();
 
       fileReader.addEventListener("load", () => {
-        this.charts.map(entry => {
-          entry.chart = fileReader.result;
-        });
+        this.charts[index].chart = fileReader.result;
       });
       fileReader.readAsDataURL(files[0]);
-      this.charts.map(entry => {
-        entry.chart = files[0];
-      });
+      this.charts[index].chart = files[0];
     },
     saveBrand() {
       db
